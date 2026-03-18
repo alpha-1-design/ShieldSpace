@@ -24,7 +24,7 @@ public class MainActivity extends BridgeActivity {
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
     }
