@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+android {
+  namespace "com.shieldspace.app"
+  compileSdk 34
+  defaultConfig {
+    applicationId "com.shieldspace.app"
+    minSdk 22
+    targetSdk 34
+    versionCode 1
+    versionName "2.0.0"
+  }
+  buildTypes {
+    release {
+      minifyEnabled true
+      shrinkResources true
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+  }
+}
+dependencies {
+  implementation fileTree(include: ['*.jar'], dir: 'libs')
+  implementation "androidx.appcompat:appcompat:1.6.1"
+  implementation project(':capacitor-android')
+  implementation "androidx.biometric:biometric:1.2.0-alpha05"
+  implementation "androidx.security:security-crypto:1.1.0-alpha06"
+}
+apply from: 'capacitor.build.gradle'

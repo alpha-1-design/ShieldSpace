@@ -1,0 +1,10 @@
+{
+  "appId": "com.shieldspace.app",
+  "appName": "ShieldSpace",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": { "launchShowDuration": 1000, "backgroundColor": "#07070f", "showSpinner": false },
+    "StatusBar":    { "style": "Dark", "backgroundColor": "#07070f" }
+  },
+  "android": { "allowMixedContent": false, "webContentsDebuggingEnabled": false }
+}

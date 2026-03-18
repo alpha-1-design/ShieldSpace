@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="ag" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#b2ffd6"/>
+      <stop offset="100%" stop-color="#3df5a0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- App rounded background -->
+  <rect width="512" height="512" rx="96" fill="#07070f"/>
+
+  <!-- Background hex grid dots -->
+  <g opacity="0.07" fill="#7fffb2">
+    <circle cx="80" cy="80" r="3"/><circle cx="160" cy="80" r="3"/><circle cx="240" cy="80" r="3"/>
+    <circle cx="320" cy="80" r="3"/><circle cx="400" cy="80" r="3"/>
+    <circle cx="120" cy="140" r="3"/><circle cx="200" cy="140" r="3"/><circle cx="280" cy="140" r="3"/>
+    <circle cx="360" cy="140" r="3"/><circle cx="440" cy="140" r="3"/>
+    <circle cx="80" cy="200" r="3"/><circle cx="160" cy="200" r="3"/><circle cx="240" cy="200" r="3"/>
+    <circle cx="320" cy="200" r="3"/><circle cx="400" cy="200" r="3"/>
+    <circle cx="80" cy="420" r="3"/><circle cx="160" cy="420" r="3"/>
+    <circle cx="320" cy="420" r="3"/><circle cx="400" cy="420" r="3"/>
+  </g>
+
+  <!-- Corner HUD brackets -->
+  <g stroke="#7fffb2" stroke-width="4" fill="none" opacity="0.5">
+    <path d="M38 68 L38 38 L68 38"/>
+    <path d="M474 68 L474 38 L444 38"/>
+    <path d="M38 444 L38 474 L68 474"/>
+    <path d="M474 444 L474 474 L444 474"/>
+  </g>
+
+  <!-- Outer hex ring -->
+  <polygon points="256,44 448,152 448,360 256,468 64,360 64,152"
+    fill="none" stroke="#7fffb2" stroke-width="1.5" opacity="0.18"/>
+
+  <!-- Inner shield -->
+  <path d="M256 96 L400 156 L400 296 C400 368 336 422 256 446
+           C176 422 112 368 112 296 L112 156 Z"
+    fill="#0d1a12" stroke="#7fffb2" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- THE A — drawn as filled path for crisp rendering -->
+  <!-- Left outer leg -->
+  <polygon points="256,118  148,400  196,400  256,220  316,400  364,400"
+    fill="url(#ag)" filter="url(#glow)"/>
+  <!-- Hollow inner cutout (makes it look like a real A) -->
+  <polygon points="256,182  222,310  290,310"
+    fill="#07070f"/>
+  <!-- Crossbar -->
+  <rect x="210" y="286" width="152" height="32" rx="4"
+    fill="url(#ag)" filter="url(#softglow)"/>
+
+  <!-- Small shield badge at bottom -->
+  <path d="M256 418 L272 426 L272 438 C272 445 264 450 256 453
+           C248 450 240 445 240 438 L240 426 Z"
+    fill="#7fffb2" opacity="0.7" filter="url(#softglow)"/>
+
+  <!-- Scan line effect (very subtle) -->
+  <rect width="512" height="512" rx="96" fill="none"
+    stroke="rgba(127,255,178,0.06)" stroke-width="1"/>
+</svg>

@@ -1,0 +1,17 @@
+{
+  "name": "ShieldSpace",
+  "short_name": "ShieldSpace",
+  "description": "Encrypted vault, private browser & privacy tools. 100% on-device.",
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#07070f",
+  "theme_color": "#07070f",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icon.svg",     "sizes": "any",     "type": "image/svg+xml" }
+  ],
+  "categories": ["productivity","utilities"],
+  "prefer_related_applications": false
+}
