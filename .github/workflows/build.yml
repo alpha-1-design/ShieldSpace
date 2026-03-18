@@ -24,7 +24,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Sync Capacitor
+      - name: Remove skeleton android folder
+        run: rm -rf android
+
+      - name: Add Android platform fresh
+        run: npx cap add android
+
+      - name: Sync web files
         run: npx cap sync android
 
       - name: Make gradlew executable
