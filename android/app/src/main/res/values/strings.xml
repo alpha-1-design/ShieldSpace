@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ShieldSpace</string>
+    <string name="title_activity_main">ShieldSpace</string>
+    <string name="overlay_tile_label">Privacy Dim</string>
+    <string name="overlay_channel_name">Privacy Overlay</string>
+    <string name="overlay_channel_desc">ShieldSpace privacy overlay status</string>
+</resources>

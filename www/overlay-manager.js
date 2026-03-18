@@ -228,3 +228,59 @@ const OverlayManager = (() => {
 
   return { init, openUI, closeUI, getMode, getConfig, setMode, getModes, toggleCustomApp, isCustomAppEnabled, getCommonApps };
 })();
+
+
+// ── v2.2: Wire to native ShieldOverlayPlugin ─────────
+(async function _initNativeOverlay() {
+  const native = window.Capacitor?.Plugins?.ShieldOverlay;
+  if (!native) return; // PWA mode — JS overlay only
+
+  // Sync status from native on load
+  try {
+    const status = await native.getStatus();
+    if (status.active) {
+      const dot = document.getElementById('overlayDot');
+      const txt = document.getElementById('overlayTxt');
+      if (dot) dot.className = 'status-dot on';
+      if (txt) txt.textContent = 'active';
+    }
+  } catch(e) {}
+
+  // Expose toggle to window so QS tile changes reflect in UI
+  window.ShieldNativeOverlay = {
+    async show(alpha = 0.6) {
+      try {
+        await native.show({ alpha });
+        _updateOverlayStatus(true);
+      } catch(e) {
+        // Permission not granted — request it
+        await native.requestPermission();
+      }
+    },
+    async hide() {
+      try {
+        await native.hide();
+        _updateOverlayStatus(false);
+      } catch(e) {}
+    },
+    async toggle() {
+      try {
+        await native.toggle();
+        const s = await native.getStatus();
+        _updateOverlayStatus(s.active);
+      } catch(e) {
+        await native.requestPermission();
+      }
+    },
+    async requestPermission() {
+      return native.requestPermission();
+    }
+  };
+
+  function _updateOverlayStatus(active) {
+    const dot = document.getElementById('overlayDot');
+    const txt = document.getElementById('overlayTxt');
+    if (dot) dot.className = 'status-dot ' + (active ? 'on' : 'off');
+    if (txt) txt.textContent = active ? 'active' : 'off';
+  }
+})();
